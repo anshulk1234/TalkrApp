@@ -1,4 +1,4 @@
-# ChatCord App
+# TalkrApp
 Realtime chat app with websockets using Node.js, Express and Socket.io with JavaScript on the frontend
 ## Usage
 ```
