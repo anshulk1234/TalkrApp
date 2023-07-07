@@ -23,8 +23,10 @@ const botName = "TalkrApp";
 io.on("connection", (socket) => {
   socket.on("joingroup", ({ username, group }) => {
     const user = userJoin(socket.id, username, group);
-
-    socket.join(user.group);
+if(user==null){
+      socket.emit("invalid",username);
+    }else{
+      socket.join(user.group);    
 
     // Welcome current user
     socket.emit("message", formatMessage(botName, `Welcome to ${user.group}!`));
@@ -42,6 +44,8 @@ io.on("connection", (socket) => {
       group: user.group,
       users: getgroupUsers(user.group),
     });
+    }
+    
   });
 
   // Listen for chatMessage

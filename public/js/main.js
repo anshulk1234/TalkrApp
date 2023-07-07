@@ -12,6 +12,10 @@ const socket = io();
 
 // Join chatgroup
 socket.emit('joingroup', { username, group });
+socket.on('invalid', (username) => {
+  alert(`A person with username '${username}' have already joined. Please choose a different username.`);
+  window.location = '../index.html';
+});
 
 // Get group and users
 socket.on('groupUsers', ({ group, users }) => {

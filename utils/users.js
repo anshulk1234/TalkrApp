@@ -2,6 +2,10 @@ const users = [];
 
 // Join user to chat
 function userJoin(id, username, group) {
+  const existingUser = users.find(user => user.username === username);
+  if (existingUser) {
+    return null; // Return null to indicate that the username is not available
+  }
   const user = { id, username, group };
   users.push(user);
   return user;
